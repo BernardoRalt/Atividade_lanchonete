@@ -1,42 +1,29 @@
 package lanchonete;
 
+import java.util.Scanner;
+
 import java.util.ArrayList;
 
 public class Pedido {
 
-	private int numero;
+	Scanner Leia = new Scanner(System.in);
+	
+	
 	private Cliente cliente;
 	private Funcionario funcionario;
-	private ArrayList<ItemPedido>itens;
+	private ArrayList<Lanche>Itens;
 	private double valorTotal;
 	
-	public Pedido(int numero, Cliente cliente, Funcionario funcionario, ArrayList<ItemPedido> Itens, double valorTotal) {
+	public Pedido( Cliente cliente, Funcionario funcionario) {
 		
-		this.numero = numero;
+		
 		this.cliente = cliente;
 		this.funcionario = funcionario;
-		this.itens = Itens;
+		this.Itens = Itens;
 		this.valorTotal = valorTotal;
 		
 	}
 	
-	
-	
-	
-	public int getNumero() {
-		return this.numero;
-	}
-
-
-
-
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-
-
-
 	public Cliente getCliente() {
 		return this.cliente;
 	}
@@ -65,15 +52,15 @@ public class Pedido {
 
 
 
-	public ArrayList<ItemPedido> getItens() {
-		return this.itens;
+	public ArrayList<Lanche> getItens() {
+		return this.Itens;
 	}
 
 
 
 
-	public void setItens(ArrayList<ItemPedido> itens) {
-		this.itens = itens;
+	public void setItens(ArrayList<Lanche> itens) {
+		this.Itens = itens;
 	}
 
 
@@ -93,9 +80,12 @@ public class Pedido {
 
 
 
-	void adicinarItem(ItemPedido ItemPedido) {
-		
-		this.itens.add(ItemPedido);
+	void adicinarItem(Lanche Lanche) {
+		int i;
+		System.out.println("quantos lanches?");
+		i = Leia.nextInt();
+		Lanche.setQuantidade(i);
+		this.Itens.add(Lanche);
 		
 	}
 	
