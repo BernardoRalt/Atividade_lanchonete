@@ -28,9 +28,19 @@ public class Lanchonete {
 		Lanche 	alcatra = new Lanche("Alcatra", 15);
 		Lanche portuguesa = new Lanche("portuguesa", 15);
 		Lanche geleia = new Lanche("Queijo bire com geleia de pimenta", 20);
-
+		
+		Funcionario fun1 = new Funcionario("atendente", "Roberto", "1973665321");
+		Funcionario fun2 = new Funcionario("atendente", "Ana Beatriz Silva", "419.872.360-06");
+		Funcionario fun3 = new Funcionario("atendente", "Marcos Vinícius Almeida", "582.140.987-40");
+		Funcionario fun4 = new Funcionario("atendente", "Juliana Rocha Costa", "307.561.228-12");
+		Funcionario fun5 = new Funcionario("atendente", "Rafael Martins Oliveira", "916.204.753-09");
+		Funcionario fun6 = new Funcionario("atendente", "Fernanda Souza Ribeiro", "284.795.610-50"); 	
 		
 		this.cardapio = new ArrayList<>();
+		this.funcionarios = new ArrayList<>();
+		this.pedidos = new ArrayList<>();
+		
+		Collections.addAll(funcionarios, fun1,fun2,fun3,fun4,fun5,fun6);
 		
 		Collections.addAll(cardapio, Calabresa,quatro_queijos, marguerita, frango_catupiry, camarao, peperonni, alcatra, portuguesa, geleia);
 	}
@@ -76,23 +86,82 @@ public class Lanchonete {
 	}
 	
 	void criarPedido() {
+		Funcionario f = null;
+		boolean dados = false;
 		
-		Funcionario funcionario = new Funcionario();
+		do{
+			System.out.println("qual o Funcionario que esta atendento?");
+		String nomeDoFuncionario = Leia.nextLine();
 		
-		Cliente cliente = new Cliente();
+	
 		
-		System.out.println("qual o Funcionario que esta atendento?");
-		String x = Leia.nextLine();
-		funcionario.setNome(x); 
+		for(Funcionario func : funcionarios) {
+			
+			if(func.getNome().equalsIgnoreCase(nomeDoFuncionario)) {
+				dados = true;
+				f = func;
+				break;
+				
+			}else {
+				dados = false;
+				System.out.println("tem nimguem com esse nome nao");
+				
+			}
+			
+		}
+		}while(dados == false);
 		
 		System.out.println("Qual o nome do cliente?");
 		String y = Leia.nextLine();
-		cliente.setNome(y);
+		System.out.println("Qual o numero do cliente?");
+		String num = Leia.nextLine();
+		System.out.println(" endereço do cliente? ");
+		String end = Leia.nextLine();
+		System.out.println("qual o cpf do Cliente?");
+		String cpf = Leia.nextLine();
 		
-		Pedido P1 = new Pedido(cliente, funcionario);
+		Cliente c1 = new Cliente(num, end, y, cpf);
 		
-		this.pedidos.add(P1);
+		Pedido p1 = new Pedido(c1, f);
+		
+		pedidos.add(p1);
+		
+		boolean veri = false;
+		
+		int x;
+		
+		do{
+			System.out.println("Qual sabor o Cliente quer? ");
+		String nomeDoSabor = Leia.nextLine();
+		
+		Lanche L = null;
+		
+		for(Lanche L1 : cardapio) {
+			
+			if(L1.getNome().equalsIgnoreCase(nomeDoSabor)) {
+				
+				veri = true;
+				L = L1;
+				break;
+				
+			}else {
+				veri = false;
+			}
+			
+		}
+		
+		if(L != null) {
+		p1.adicinarItem(L);
+		}else {System.out.println("Lanche não encontrado");
+		}
+		System.out.println("deseja adicionar mais algum item?\n 1 - sim \n 0 - não");
+		x = Leia.nextInt();
+		Leia.nextLine();
+		
+		}while( x != 0);
+		
 	}
+		
 	
 	void contratarFuncionario(Funcionario funcionario) {
 		

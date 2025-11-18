@@ -4,11 +4,12 @@ public class Funcionario extends Pessoa {
 
 	private String cargo;
 	
-	public Funcionario() {
+	public Funcionario(String cargo, String nome, String cpf) {
 		
 		super(nome,cpf);
 		
 		this.cargo = cargo;
+		
 		
 	}
 	

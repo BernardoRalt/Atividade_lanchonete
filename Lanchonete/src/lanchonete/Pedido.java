@@ -22,6 +22,8 @@ public class Pedido {
 		this.Itens = Itens;
 		this.valorTotal = valorTotal;
 		
+		this.Itens = new ArrayList<>();
+		
 	}
 	
 	public Cliente getCliente() {
@@ -97,8 +99,13 @@ public class Pedido {
 	
 	void exibirDetalhes() {
 		
-		
-		
+		 
+		   System.out.println("DETALHES DO PEDIDO: \nFuncionario : "+this.funcionario.getNome()+"\n Cliente: "+this.cliente.getNome());
+		for(Lanche L : Itens) {
+			
+			L.info();
+			
+		}
 	}
 	
 }

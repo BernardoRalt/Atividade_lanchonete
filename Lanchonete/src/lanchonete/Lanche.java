@@ -44,7 +44,12 @@ public class Lanche {
 	}
 	
 
-	
+	public void info() {
+		
+		System.out.println("Nome: "+this.nome);
+		System.out.println("Quantidade: "+this.quantidade);
+		
+	}
 	
 }
 

@@ -5,12 +5,14 @@ public class Cliente extends Pessoa {
 	private String telefone; 
 	private String endereco;
 	
-	public Cliente() {
+	public Cliente(String telefone,String endereco, String nome, String cpf) {
 		
-		super(nome,cpf);
+		super(nome, cpf);
 		
 		this.telefone = telefone;
 		this.endereco = endereco;
+		
+		
 		
 	}
 

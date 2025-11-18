@@ -14,7 +14,7 @@ public class Main {
 		
 		int escolha;
 		
-		System.out.println("Bem vindo à Pizzaria RALT'S Delicias");
+		do{System.out.println("Bem vindo à Pizzaria RALT'S Delicias");
 		System.out.println("-------------------------------------------------------------------------------------");
 		System.out.println("Escolhas uma das opções abaixo (digitando o seu número respectivamente)");
 		
@@ -25,9 +25,11 @@ public class Main {
 		
 		   case 1: 
 			   int i =0;
-			   System.out.println("A Pizzarai RALT'S Delicias usa ingredientes da melhor qualidade do mercado, dito isso aqui esta o cardapio:");
+			    System.out.println("A Pizzarai RALT'S Delicias usa ingredientes da melhor qualidade do mercado, dito isso aqui esta o cardapio:");
 			   
-			   L1.listarCardapio();
+			   		L1.listarCardapio();
+			   
+			   System.out.println("");
 			   
 			   break;
 			   
@@ -35,23 +37,43 @@ public class Main {
 			   
 			   L1.criarPedido();
 			   int x =0;
-			   System.out.println("Oque vc pretende fazer?");
-			   System.out.println("1 - adicionar item \n 2 - calcular valor \n 3 - exibir informaçõs do pedido");
+			  
+			   System.out.println("Oq o cliente deseja realizar");
+			   System.out.println("1 - pedir informaçõs do pedido \n 2 - realizar pagamento");
 			   x = Leia.nextInt();
 			   switch (x) {
 			   
 			   case 1:
-				   Lanche y = new Lanche("vamo",15);
-				   System.out.println("Qual o lanche que o cliente gostaria de adicionar?");
-				
-				   L1.getPedidos().get(0).adicinarItem(y);
-				   
 				  
-			   
+				   L1.getPedidos().get(0).exibirDetalhes();
+				   break;
+				   
+			   case 2:
+				   
+				   System.out.println("----------------PAGAMENTO----------------");
+				   System.out.println("Itens pedidos          unidades          valor por unidade");
+				   
+				   for(Lanche L : L1.getPedidos().get(0).getItens()) {
+				   System.out.println(L.getNome()+"          "+L.getQuantidade()+"          "+L.getPreco());
+				   }
+				   double valor = 0;
+				   for(Lanche Le : L1.getPedidos().get(0).getItens()) {
+					   
+					   valor = Le.getPreco()*Le.getQuantidade();
+					   
+				   }
+				   
+				   System.out.println("Valor final: "+valor);
+				   
+				   System.out.println("Forma de pagamento \n 1 - Crédito\n2 - débito\n3 - pix\n4 - fiado");
+				   
+				   
+				   break;
 			   }
 			   
 			   
 		}
+		}while(escolha != 0);
 	}
 
 }
